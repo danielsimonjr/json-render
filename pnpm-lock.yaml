@@ -7,9 +7,9 @@ settings:
 overrides:
   postcss: ^8.5.10
   minimatch@<3.1.3: '>=3.1.3'
-  minimatch@>=9.0.0 <9.0.6: '>=9.0.6'
   rollup@>=4.0.0 <4.59.0: '>=4.59.0'
-  minimatch@>=9.0.0 <9.0.7: '>=9.0.7'
+  minimatch@>=9.0.0 <9.0.7: ^9.0.7
+  eslint-plugin-react>minimatch: ^9.0.7
   minimatch@<3.1.4: '>=3.1.4'
   ajv@<6.14.0: '>=6.14.0'
   flatted@<3.4.0: '>=3.4.0'
@@ -18,12 +18,10 @@ overrides:
   brace-expansion@>=2.0.0 <2.0.3: '>=2.0.3'
   picomatch@>=4.0.0 <4.0.4: '>=4.0.4'
   yaml@>=2.0.0 <2.8.3: '>=2.8.3'
-  vite@>=7.0.0 <=7.3.1: '>=7.3.2'
-  vite@>=7.1.0 <=7.3.1: '>=7.3.2'
+  vite: ^7.3.5
   ws@>=8.0.0 <8.20.1: '>=8.20.1'
   esbuild@>=0.27.3 <0.28.1: '>=0.28.1'
   ws@>=8.0.0 <8.21.0: '>=8.21.0'
-  vite@>=7.0.0 <=7.3.4: '>=7.3.5'
   js-yaml@<=4.1.1: '>=4.2.0'
 
 importers:
@@ -54,9 +52,12 @@ importers:
       typescript:
         specifier: 5.9.2
         version: 5.9.2
+      vite:
+        specifier: ^7.3.5
+        version: 7.3.6(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.9.0)
       vitest:
         specifier: ^4.1.0
-        version: 4.1.0(@opentelemetry/api@1.9.0)(@types/node@22.19.6)(jsdom@27.4.0)(vite@7.3.1(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2))
+        version: 4.1.0(@opentelemetry/api@1.9.0)(@types/node@22.19.6)(jsdom@27.4.0)(vite@7.3.6(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.9.0))
 
   apps/web:
     dependencies:
@@ -224,7 +225,7 @@ importers:
         version: link:../typescript-config
       tsup:
         specifier: ^8.0.2
-        version: 8.5.1(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.2)(yaml@2.8.2)
+        version: 8.5.1(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.2)(yaml@2.9.0)
       typescript:
         specifier: ^5.4.5
         version: 5.9.2
@@ -240,7 +241,7 @@ importers:
         version: link:../typescript-config
       tsup:
         specifier: ^8.0.2
-        version: 8.5.1(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.2)(yaml@2.8.2)
+        version: 8.5.1(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.2)(yaml@2.9.0)
       typescript:
         specifier: ^5.4.5
         version: 5.9.2
@@ -298,7 +299,7 @@ importers:
         version: 19.2.3
       tsup:
         specifier: ^8.0.2
-        version: 8.5.1(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.2)(yaml@2.8.2)
+        version: 8.5.1(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.2)(yaml@2.9.0)
       typescript:
         specifier: ^5.4.5
         version: 5.9.2
@@ -1537,7 +1538,7 @@ packages:
     resolution: {integrity: sha512-evxREh+Hork43+Y4IOhTo+h5lGmVRyjqI739Rz4RlUPqwrkFFDF6EMvOOYjTx4E8Tl6gyCLRL8Mu7Ry12a13Tw==}
     peerDependencies:
       msw: ^2.4.9
-      vite: '>=7.3.5'
+      vite: ^7.3.5
     peerDependenciesMeta:
       msw:
         optional: true
@@ -2516,12 +2517,8 @@ packages:
     resolution: {integrity: sha512-VP79XUPxV2CigYP3jWwAUFSku2aKqBH7uTAapFWCBqutsbmDo96KY5o8uh6U+/YSIn5OxJnXp73beVkpqMIGhA==}
     engines: {node: '>=18'}
 
-  minimatch@10.2.5:
-    resolution: {integrity: sha512-MULkVLfKGYDFYejP07QOurDLLQpcjk7Fw+7jXS2R2czRQzR56yHRveU5NDJEOviH+hETZKSkIk5c+T23GjFUMg==}
-    engines: {node: 18 || 20 || >=22}
-
-  minimatch@9.0.5:
-    resolution: {integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==}
+  minimatch@9.0.9:
+    resolution: {integrity: sha512-OBwBN9AL4dqmETlpS2zasx+vTeWclWzkblfZk7KTA5j3jeOONz/tRCnZomUyvNg83wL5Zv9Ss6HMJXAgL8R2Yg==}
     engines: {node: '>=16 || 14 >=14.17'}
 
   mlly@1.8.0:
@@ -3203,8 +3200,8 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  vite@7.3.1:
-    resolution: {integrity: sha512-w+N7Hifpc3gRjZ63vYBXA56dvvRlNWRczTdmCBBa+CotUzAPf5b7YMdMR/8CQoeYE5LX3W4wj6RYTgonm1b9DA==}
+  vite@7.3.6:
+    resolution: {integrity: sha512-4XP60spRGjSZFf1qYH+dJIkK2znL3zQfl9KkOV9MkkRR/3Dls0dxaBsQPTloEc5BLXWPL9vsOxopxyKoMmDueg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -3257,7 +3254,7 @@ packages:
       '@vitest/ui': 4.1.0
       happy-dom: '*'
       jsdom: '*'
-      vite: '>=7.3.5'
+      vite: ^7.3.5
     peerDependenciesMeta:
       '@edge-runtime/vm':
         optional: true
@@ -3346,11 +3343,6 @@ packages:
 
   xmlchars@2.2.0:
     resolution: {integrity: sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==}
-
-  yaml@2.8.2:
-    resolution: {integrity: sha512-mplynKqc1C2hTVYxd0PU2xQAc22TI1vShAYGksCCfxbn/dFwnHTNi1bvYsBTkhdUNtGIf5xNOg938rrSSYvS9A==}
-    engines: {node: '>= 14.6'}
-    hasBin: true
 
   yaml@2.9.0:
     resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
@@ -3535,7 +3527,7 @@ snapshots:
     dependencies:
       '@eslint/object-schema': 2.1.7
       debug: 4.4.3
-      minimatch: 10.2.5
+      minimatch: 9.0.9
     transitivePeerDependencies:
       - supports-color
 
@@ -3556,7 +3548,7 @@ snapshots:
       ignore: 5.3.2
       import-fresh: 3.3.1
       js-yaml: 5.1.0
-      minimatch: 10.2.5
+      minimatch: 9.0.9
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
@@ -4270,7 +4262,7 @@ snapshots:
       '@typescript-eslint/types': 8.53.0
       '@typescript-eslint/visitor-keys': 8.53.0
       debug: 4.4.3
-      minimatch: 10.2.5
+      minimatch: 9.0.9
       semver: 7.7.3
       tinyglobby: 0.2.17
       ts-api-utils: 2.4.0(typescript@5.9.2)
@@ -4317,13 +4309,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.0(vite@7.3.1(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2))':
+  '@vitest/mocker@4.1.0(vite@7.3.6(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.9.0))':
     dependencies:
       '@vitest/spy': 4.1.0
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.3.1(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
+      vite: 7.3.6(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.9.0)
 
   '@vitest/pretty-format@4.1.0':
     dependencies:
@@ -4817,7 +4809,7 @@ snapshots:
       estraverse: 5.3.0
       hasown: 2.0.2
       jsx-ast-utils: 3.3.5
-      minimatch: 9.0.5
+      minimatch: 9.0.9
       object.entries: 1.1.9
       object.fromentries: 2.0.8
       object.values: 1.2.1
@@ -4875,7 +4867,7 @@ snapshots:
       is-glob: 4.0.3
       json-stable-stringify-without-jsonify: 1.0.1
       lodash.merge: 4.6.2
-      minimatch: 10.2.5
+      minimatch: 9.0.9
       natural-compare: 1.4.0
       optionator: 0.9.4
     optionalDependencies:
@@ -5446,11 +5438,7 @@ snapshots:
 
   mimic-function@5.0.1: {}
 
-  minimatch@10.2.5:
-    dependencies:
-      brace-expansion: 5.0.6
-
-  minimatch@9.0.5:
+  minimatch@9.0.9:
     dependencies:
       brace-expansion: 5.0.6
 
@@ -5612,13 +5600,13 @@ snapshots:
 
   possible-typed-array-names@1.1.0: {}
 
-  postcss-load-config@6.0.1(jiti@2.6.1)(postcss@8.5.15)(yaml@2.8.2):
+  postcss-load-config@6.0.1(jiti@2.6.1)(postcss@8.5.15)(yaml@2.9.0):
     dependencies:
       lilconfig: 3.1.3
     optionalDependencies:
       jiti: 2.6.1
       postcss: 8.5.15
-      yaml: 2.8.2
+      yaml: 2.9.0
 
   postcss@8.5.15:
     dependencies:
@@ -6092,7 +6080,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.5.1(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.2)(yaml@2.8.2):
+  tsup@8.5.1(jiti@2.6.1)(postcss@8.5.15)(typescript@5.9.2)(yaml@2.9.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.28.1)
       cac: 6.7.14
@@ -6103,7 +6091,7 @@ snapshots:
       fix-dts-default-cjs-exports: 1.0.1
       joycon: 3.1.1
       picocolors: 1.1.1
-      postcss-load-config: 6.0.1(jiti@2.6.1)(postcss@8.5.15)(yaml@2.8.2)
+      postcss-load-config: 6.0.1(jiti@2.6.1)(postcss@8.5.15)(yaml@2.9.0)
       resolve-from: 5.0.0
       rollup: 4.61.1
       source-map: 0.7.6
@@ -6240,7 +6228,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@7.3.1(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2):
+  vite@7.3.6(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.9.0):
     dependencies:
       esbuild: 0.28.1
       fdir: 6.5.0(picomatch@4.0.4)
@@ -6253,12 +6241,12 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.6.1
       lightningcss: 1.30.2
-      yaml: 2.8.2
+      yaml: 2.9.0
 
-  vitest@4.1.0(@opentelemetry/api@1.9.0)(@types/node@22.19.6)(jsdom@27.4.0)(vite@7.3.1(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)):
+  vitest@4.1.0(@opentelemetry/api@1.9.0)(@types/node@22.19.6)(jsdom@27.4.0)(vite@7.3.6(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.9.0)):
     dependencies:
       '@vitest/expect': 4.1.0
-      '@vitest/mocker': 4.1.0(vite@7.3.1(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2))
+      '@vitest/mocker': 4.1.0(vite@7.3.6(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.9.0))
       '@vitest/pretty-format': 4.1.0
       '@vitest/runner': 4.1.0
       '@vitest/snapshot': 4.1.0
@@ -6275,7 +6263,7 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 7.3.1(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.8.2)
+      vite: 7.3.6(@types/node@22.19.6)(jiti@2.6.1)(lightningcss@1.30.2)(yaml@2.9.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
@@ -6360,9 +6348,6 @@ snapshots:
   xml-name-validator@5.0.0: {}
 
   xmlchars@2.2.0: {}
-
-  yaml@2.8.2:
-    optional: true
 
   yaml@2.9.0: {}
 
