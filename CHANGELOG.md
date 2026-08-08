@@ -5,6 +5,16 @@ All notable changes to json-render are documented here. The format is based on
 
 ## [Unreleased]
 
+### Security
+
+- `fast-uri` 3.1.4 -> 3.1.5 via a pnpm override, clearing the last open advisory. It is
+  transitive and its parent pins it, so `pnpm update` could not move it.
+- The override is keyed `fast-uri@<3.1.5` -> `^3.1.5`, deliberately: keyed to the range
+  actually flagged so it goes inert once the tree moves past it, and capped to `^3.1.5`
+  rather than `>=3.1.5` because the open-ended form resolved to **4.1.2**, a major jump far
+  beyond what the advisory required.
+
+
 ### Security — all 6 open Dependabot alerts resolved (2026-08-03)
 
 - `brace-expansion` 5.0.6 -> 5.0.9 (two high alerts, needing 5.0.7 and 5.0.8)
