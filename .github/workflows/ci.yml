@@ -38,6 +38,11 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      # apps/web imports @json-render/{core,react,codegen}, whose types live only in dist/.
+      # Build the workspace packages before type-check and test, or a fresh runner has no dist.
+      - name: Build packages
+        run: pnpm --filter "./packages/*" build
+
       - name: Type check
         run: pnpm type-check
 
