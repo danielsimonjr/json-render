@@ -7,6 +7,16 @@ All notable changes to json-render are documented here. The format is based on
 
 ### Security
 
+- `next` 16.2.11 -> 16.3.6, in two Dependabot steps (#12, then #14).
+  16.3.6 carries the fix for GHSA-vcvr-r3jv-pc5j, a remote code execution in the
+  `next/og` `ImageResponse` handler. 16.3.4 and 16.3.5 are backported bug fixes,
+  including two `next/image` disk-cache fixes and a CSP-nonce fix for loading and
+  template files.
+- The bump moves two pinned-by-override packages transitively, and both stay inside
+  their override: `sharp` 0.35.3 -> 0.35.5 (override `sharp@<0.35.0`) and
+  `postcss` 8.5.24 -> 8.5.28 (override `^8.5.10`). The rest of the lockfile delta is
+  `caniuse-lite`, `baseline-browser-mapping`, `nanoid` and `source-map-js`.
+  No override goes inert and nothing is downgraded.
 - `fast-uri` 3.1.4 -> 3.1.5 via a pnpm override, clearing the last open advisory. It is
   transitive and its parent pins it, so `pnpm update` could not move it.
 - The override is keyed `fast-uri@<3.1.5` -> `^3.1.5`, deliberately: keyed to the range
