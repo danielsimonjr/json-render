@@ -7,7 +7,29 @@ All notable changes to json-render are documented here. The format is based on
 
 ### Security
 
-- `next` 16.2.11 -> 16.3.6, in two Dependabot steps (#12, then #14).
+- Four overrides added for advisories Dependabot provably could not fix on its own. Its
+  updater runs for `brace-expansion`, `js-yaml`, `@ai-sdk/provider-utils` and
+  `@humanfs/node` were all failing with `security_update_not_possible` -- for
+  brace-expansion it reported latest-resolvable 5.0.9 against lowest-non-vulnerable
+  5.0.12 with an EMPTY conflicting-dependencies list, meaning a parent's range caps the
+  transitive dep and no in-range update exists. The alerts therefore fired indefinitely
+  while no PR could ever open.
+- `brace-expansion` 5.0.9 -> 5.0.12, `js-yaml` 5.2.3 -> 5.4.2,
+  `@ai-sdk/provider-utils` 4.0.5 -> 4.0.57, `@humanfs/node` 0.16.7 -> 0.16.8.
+- Each key is scoped to the range the advisory actually flags, so it goes inert once the
+  tree moves past it, and each is capped with `^` rather than `>=`. The cap matters here:
+  `@ai-sdk/provider-utils` is at 5.0.53 on latest, so an open-ended bound would have
+  pulled a major jump far beyond what the advisory required -- the same trap recorded for
+  fast-uri below.
+- The lockfile delta is 17 resolutions, every one attributable to these four: the targets
+  themselves plus `@ai-sdk/provider`, `eventsource-parser`, `undici`,
+  `@humanfs/core` and `@humanfs/types`. No other pinned package moved; sharp, postcss,
+  ws, esbuild, ajv, next, flatted, picomatch, minimatch and rollup were each checked and
+  are unchanged.
+- Verified locally with the same four steps CI runs: lint, type-check, 166 tests across 10
+  files, and a full workspace build, all green.
+- `next` 16.2.11 -> 16.3.6 in both manifests: `apps/web` via #12 then #14, and
+  `examples/dashboard` via #15, which only became visible once #14 landed.
   16.3.6 carries the fix for GHSA-vcvr-r3jv-pc5j, a remote code execution in the
   `next/og` `ImageResponse` handler. 16.3.4 and 16.3.5 are backported bug fixes,
   including two `next/image` disk-cache fixes and a CSP-nonce fix for loading and
