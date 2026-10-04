@@ -7,6 +7,18 @@ All notable changes to json-render are documented here. The format is based on
 
 ### Security
 
+- `postcss` override tightened `^8.5.10` -> `^8.5.28`, collapsing a duplicate.
+  A plain, unkeyed override sets a FLOOR, not a single version, so 8.5.24 and 8.5.28 both
+  satisfied `^8.5.10` and coexisted -- and the older copy kept `nanoid` 3.3.16, which
+  GHSA-2v37-7h3g-55p8 flags. Raising the floor past 8.5.24 leaves one postcss and one
+  nanoid (3.3.19). `pnpm audit` drops from 2 HIGH to 1.
+- The remaining `pnpm audit` finding is `braces` <=3.0.3 (GHSA-vfj7-8cjw-p6xm), reached
+  through lint-staged -> micromatch. It is NOT actionable: 3.0.3 is the latest published
+  version, so no patched release exists to move to.
+- Note on the two tools disagreeing, since it will recur: `pnpm audit` reported braces and
+  nanoid while the Dependabot alert list showed neither. Both were auto-dismissed by
+  GitHub because their scope is `development`; pnpm applies no such policy. Neither tool
+  is wrong, and neither alone is the whole picture.
 - Four overrides added for advisories Dependabot provably could not fix on its own. Its
   updater runs for `brace-expansion`, `js-yaml`, `@ai-sdk/provider-utils` and
   `@humanfs/node` were all failing with `security_update_not_possible` -- for
