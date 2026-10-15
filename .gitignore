@@ -23,6 +23,8 @@ coverage
 
 # Build Outputs
 .next/
+# Next writes this file on every dev run and build, and the two variants differ.
+next-env.d.ts
 out/
 build
 dist

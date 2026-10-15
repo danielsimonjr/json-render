@@ -5,6 +5,15 @@ All notable changes to json-render are documented here. The format is based on
 
 ## [Unreleased]
 
+### Fixed
+
+- `examples/dashboard/next-env.d.ts` is no longer tracked, and the root `.gitignore` ignores
+  `next-env.d.ts`. Next rewrites that file on every `next dev` and `next build`, and the dev
+  variant (`./.next/dev/types/routes.d.ts`) differs from the build variant, so the tracked copy
+  flipped and left a dirty tree after each production build. `apps/web` already ignored it.
+  Checked: `pnpm --filter example-dashboard build` from a tree without the file regenerates it
+  and leaves `git status` showing only this change.
+
 ### Security
 
 - `postcss` override tightened `^8.5.10` -> `^8.5.28`, collapsing a duplicate.
