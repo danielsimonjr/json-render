@@ -16,6 +16,13 @@ All notable changes to json-render are documented here. The format is based on
 
 ### Security
 
+- `source-map-js` moved out of the vulnerable range with a scoped override,
+  `source-map-js@<1.2.2` -> `^1.2.2` (GHSA-68fv-2mgg-jv7q, Dependabot alert 172: event-loop
+  denial of service through indexed source-map section offsets). The lockfile held 1.2.1
+  through `postcss`, and Dependabot's own security update reported `update_not_possible`.
+  The key is scoped to the flagged range, so it goes inert once nothing resolves below 1.2.2,
+  and the `^` cap keeps a future major out. The lockfile delta is the removal of
+  `source-map-js@1.2.1`; `pnpm why source-map-js -r` lists only 1.2.2 after a frozen install.
 - `postcss` override tightened `^8.5.10` -> `^8.5.28`, collapsing a duplicate.
   A plain, unkeyed override sets a FLOOR, not a single version, so 8.5.24 and 8.5.28 both
   satisfied `^8.5.10` and coexisted -- and the older copy kept `nanoid` 3.3.16, which
